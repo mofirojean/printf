@@ -6,11 +6,11 @@
  * Return: the length of the string.
  */
 
-int print_String(va_list l)
+int print_String(va_list val)
 {
 	register short len = 0;
-	char *res, *s = va_arg(l, char *);
-	int count;
+	char *res, *s = va_arg(val, char *);
+	int count = 0;
 
 	if (!s)
 		return (_puts(NULL_STRING));
@@ -37,7 +37,7 @@ int print_String(va_list l)
  * Return: true or false
  */
 
-int isNonAlphaNumeric(char c) 
+int isNonAlphaNumeric(char c)
 {
 	return ((c > 0 && c < 32) || c >= 127);
 }
