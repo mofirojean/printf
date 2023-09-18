@@ -79,4 +79,4 @@ These are all the tasks of this project, the ones that are completed link to the
 
 ---
 # Author: 
-[Oluwatimilehin Bello](https://github.com/Timilehin-bello) and [Nicole Adeyemi](https://github.com/adenicole)
+[Mofiro Mougang Jean Chungong](https://github.com/mofirojean) and [ Ilham laiti](https://github.com/ilhem12)
