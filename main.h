@@ -1,97 +1,56 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <limits.h>
 
-#define UNUSED(x) (void)(x)
-#define BUFF_SIZE 1024
-
-/* FLAGS */
-#define F_MINUS 1
-#define F_PLUS 2
-#define F_ZERO 4
-#define F_HASH 8
-#define F_SPACE 16
-
-/* SIZES */
-#define S_LONG 2
-#define S_SHORT 1
+#define NULL_STRING "(null)"
+#define NUL '\0'
 
 /**
- * struct fmt - Struct op
+ * struct convert - defines a structure for symbols and functions
  *
- * @fmt: The format.
- * @fn: The function associated.
+ * @sym: The operator
+ * @f: The function associated
  */
-typedef struct fmt
+
+struct convert
 {
-	char fmt;
-	int (*fn)(va_list, char[], int, int, int, int);
-} fmt_t;
+	char *sym;
+	int (*f)(va_list);
+};
+typedef struct convert conver_t;
+
+
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i,
-	va_list list, char buffer[], int flags, int width, int precision, int size);
+int _putchar(char c);
+int format_reciever(const char *format, conver_t f_list[], va_list arg_list);
+int print_percent(va_list);
+int print_integer(va_list);
+int print_char(va_list);
+int print_string(va_list);
+int print_binary(va_list);
+int print_unsigned_integer(va_list);
+int print_octal(va_list list);
+int print_hex(va_list list);
+int print_HEX(va_list list);
+int print_String(va_list val);
+int print_pointer(va_list val);
+int print_rev(va_list l);
+int print_rot13(va_list list);
 
-int _putchar(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-void print_hex(long n);
-int print_percent(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-int print_oct(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-char hex_dec(long n);
-char hex_dec_caps(long n);
-void print_hex_x(long n);
-int print_int(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-int print_string(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-int print_binary(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-int _atoi(char *s);
-void print_hex_x_caps(long n);
-int print_unsigned_int(va_list args, char buffer[], int flags,
-		int width, int precision, int size);
-int print_octate(va_list args, char buffer[], int flags,
-		int width, int precision, int size);
-int print_hexa(va_list args, char buffer[], int flags, int width,
-		int precision, int size);
-int print_hexa_caps(va_list args, char buffer[], int flags,
-		int width, int precision, int size);
-int print_hexa_all(va_list args, char str[], char buffer[],
-	int flags, char c, int width, int precision, int size);
-int print_pointer(va_list args, char buffer[], int flags, int width,
-		int precision, int size);
-
-int print_non_printable(va_list args, char buffer[],
-	int flags, int width, int precision, int size);
-/* Functions to handle other specifiers */
-int get_flag(const char *format, int *i);
-int get_width(const char *format, int *i, va_list list);
-int get_precision(const char *format, int *i, va_list list);
-int get_size(const char *format, int *i);
-
-/* width handler */
-int handle_write_char(char c, char buffer[],
-	int flags, int width, int precision, int size);
-int write_number(int is_positive, int ind, char buffer[],
-	int flags, int width, int precision, int size);
-int write_num(int ind, char bff[], int flags, int width, int precision,
-	int length, char padd, char extra_c);
-int write_pointer(char buffer[], int ind, int length,
-	int width, int flags, char padd, char extra_c, int padd_start);
-
-int write_unsgnd(int is_negative, int ind,
-	char buffer[], int flags, int width, int precision, int size);
-
-/* Some useful other functions to be used */
-int is_printable(char c);
-int is_digit(char c);
-long int convert_size_number(long int num, int size);
-long int convert_size_unsgnd(unsigned long int num, int size);
-int append_hexa_code(char ascii_code, char buffer[], int i);
-
+int print_number(va_list args);
+unsigned int base_len(unsigned int, int);
+char *rev_string(char *);
+void write_base(char *str);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int print_unsgined_number(unsigned int n);
+int hex_check(int num, char x);
+int print_hex_aux(unsigned long int num);
+int isNonAlphaNumeric(char c); 
+int _puts(char *str);
+char *convert(unsigned long int num, int base, int lowercase);
 #endif
-
