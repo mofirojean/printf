@@ -40,4 +40,3 @@ int print_octal(va_list list)
 	free(rev_str);
 	return (len);
 }
-

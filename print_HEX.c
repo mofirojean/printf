@@ -45,4 +45,3 @@ int print_HEX(va_list list)
 	free(rev_hex);
 	return (len);
 }
-

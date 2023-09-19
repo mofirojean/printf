@@ -52,5 +52,3 @@ int print_number(va_list args)
 
 	return (len);
 }
-
-
