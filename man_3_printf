@@ -1,21 +1,77 @@
-_PRINTF(3)
+.TH PRINTF 3 "19 September 2023" "Custom printf Function" "_printf()"
 
-NAME
-	_printf - prints supplied string with certain operators for substitution and formatting
+.SH NAME
+printf \- custom printf function
 
-SYNOPSIS
-	_printf FORMAT [ARGUMENTS] ...
+.SH SYNOPSIS
+.B #include <stdio.h>
+.PP
+.B int _printf(const char *format, ...);
 
-DESCRIPTION
-        Print ARGUMENT(s) according to OPTION within the supplied FORMAT string
+.SH DESCRIPTION
+The custom printf function is an alternative implementation of the standard printf function. It provides a subset of the functionality of the standard printf, supporting the format specifiers: %c, %s, %d, %i, %o, and %u.
 
-	    FORMAT controls the output to STDOUT including OPERATORS
+.SH FORMAT SPECIFIERS
+The custom printf function supports the following format specifiers:
 
-EXAMPLES
-	_print("Alx Project %d", n);
+.TP
+.B %c
+Prints a single character.
 
-REPORTING BUGS
-    Report _printf bugs to https://www.github.com/adenicole/printf    
+.TP
+.B %s
+Prints a null-terminated string.
 
-AUTHORS
-	Made by Mofiro Mougang Jean Chungong and Ilham laiti
+.TP
+.B %d, %i
+Prints a signed decimal integer.
+
+.TP
+.B %o
+Prints an unsigned octal integer.
+
+.TP
+.B %u
+Prints an unsigned decimal integer.
+
+.SH FLAGS
+The custom printf function supports the following flags for specific format specifiers:
+
+.TP
+.B +
+For signed decimal integers (%d, %i), displays a plus sign (+) for positive numbers.
+
+.TP
+.B (space)
+For signed decimal integers (%d, %i), displays a space character for positive numbers.
+
+.TP
+.B #
+For octal integers (%o), displays a leading zero (0).
+
+.SH RETURN VALUE
+The custom printf function returns the total number of characters written to the output, excluding the null terminator.
+
+.SH EXAMPLES
+The following examples demonstrate the usage of the custom printf function:
+
+.PP
+.B #include "main.h"
+.PP
+.B int main()
+.B {
+.br
+.B     printf("Hello, %s!\n", "world");
+.br
+.B     printf("The value of pi is approximately %f\n", 3.14159);
+.br
+.B     printf("The answer is %d\n", 42);
+.br
+.B     return 0;
+.B }
+
+.SH SEE ALSO
+.B printf(3), stdio(3)
+
+.SH AUTHOR
+The custom printf function and this man page were developed by Mofiro Mougang Jean Chungong and Ilham laiti
